@@ -1,5 +1,6 @@
 module Shoppe
   class VariantsController < ApplicationController
+    skip_before_filter :authenticate_user, only: [:create]
     before_filter { @active_nav = :products }
     before_filter { @product = Shoppe::Product.find(params[:product_id]) }
     before_filter { params[:id] && @variant = @product.variants.find(params[:id]) }
@@ -42,7 +43,7 @@ module Shoppe
     private
 
     def safe_params
-      params[:product].permit(:name, :permalink, :sku, :default_image_file, :price, :cost_price, :tax_rate_id, :weight, :stock_control, :active, :default)
+      params[:product].permit(:name, :permalink, :sku, :default_image_file, :price, :cost_price, :tax_rate_id, :weight, :stock_control, :active, :default, product_attributes_array: [:key, :value, :searchable, :public, :customizable])
     end
   end
 end
