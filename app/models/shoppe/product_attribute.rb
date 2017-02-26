@@ -13,6 +13,8 @@ module Shoppe
     # All attributes which are searchable
     scope :searchable, -> { where(searchable: true) }
 
+    scope :customizable, -> { where(customizable: true) }
+
     # All attributes which are public
     scope :publicly_accessible, -> { where(public: true) }
 
@@ -38,6 +40,7 @@ module Shoppe
         index += 1
         params = hash.merge(searchable: hash['searchable'].to_s == '1',
                             public: hash['public'].to_s == '1',
+                            customizable: hash['customizable'].to_s == '1',
                             position: index)
         if existing_attr = where(key: hash['key']).first
           if hash['value'].blank?

@@ -98,6 +98,7 @@ class CreateShoppeInitialSchema < ActiveRecord::Migration
       t.string   'value'
       t.integer  'position',   default: 1
       t.boolean  'searchable', default: true
+      t.boolean  'searchable', default: false
       t.datetime 'created_at'
       t.datetime 'updated_at'
       t.boolean  'public', default: true

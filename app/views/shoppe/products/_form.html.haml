@@ -32,6 +32,7 @@
           %tr
             %td= t('shoppe.products.name')
             %td= t('shoppe.products.value')
+            %td.searchable= t('shoppe.products.customizable?')
             %td.searchable= t('shoppe.products.searchable?')
             %td.searchable= t('shoppe.products.public?')
             %td.remove= t('shoppe.products.remove')
@@ -40,6 +41,7 @@
           %tr.template{:style => 'display:none;'}
             %td= text_field_tag 'product[product_attributes_array][][key]', '', :placeholder => t('shoppe.products.name')
             %td= text_field_tag 'product[product_attributes_array][][value]', '', :placeholder => t('shoppe.products.value')
+            %td.searchable= check_box_tag 'product[product_attributes_array][][customizable]', '1'
             %td.searchable= check_box_tag 'product[product_attributes_array][][searchable]', '1'
             %td.searchable= check_box_tag 'product[product_attributes_array][][public]', '1'
             %td.remove= link_to t('shoppe.remove') , '#', :class => 'button button-mini purple'
@@ -48,6 +50,7 @@
             %tr
               %td= text_field_tag 'product[product_attributes_array][][key]', attribute.key, :placeholder => t('shoppe.products.name')
               %td= text_field_tag 'product[product_attributes_array][][value]', attribute.value, :placeholder => t('shoppe.products.value')
+               %td.searchable= check_box_tag 'product[product_attributes_array][][customizable]', '1', attribute.customizable?
               %td.searchable= check_box_tag 'product[product_attributes_array][][searchable]', '1', attribute.searchable?
               %td.searchable= check_box_tag 'product[product_attributes_array][][public]', '1', attribute.public?
               %td.remove= link_to t("shoppe.remove"), '#', :class => 'button button-mini purple'
