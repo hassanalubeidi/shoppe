@@ -44,7 +44,7 @@
             %td.searchable= check_box_tag 'product[product_attributes_array][][public]', '1'
             %td.remove= link_to t('shoppe.remove') , '#', :class => 'button button-mini purple'
             %td.handle
-          - for attribute in @product.product_attributes
+          - for attribute in @variant.product_attributes
             %tr
               %td= text_field_tag 'product[product_attributes_array][][key]', attribute.key, :placeholder => t('shoppe.products.name')
               %td= text_field_tag 'product[product_attributes_array][][value]', attribute.value, :placeholder => t('shoppe.products.value')
