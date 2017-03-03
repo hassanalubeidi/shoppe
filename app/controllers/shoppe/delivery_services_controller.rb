@@ -1,5 +1,6 @@
 module Shoppe
   class DeliveryServicesController < Shoppe::ApplicationController
+    before_filter :login_required
     before_filter { @active_nav = :delivery_services }
     before_filter { params[:id] && @delivery_service = Shoppe::DeliveryService.find(params[:id]) }
 

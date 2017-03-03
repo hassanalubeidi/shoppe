@@ -1,5 +1,6 @@
 module Shoppe
   class TaxRatesController < Shoppe::ApplicationController
+    before_filter :login_required
     before_filter { @active_nav = :tax_rates }
     before_filter { params[:id] && @tax_rate = Shoppe::TaxRate.find(params[:id]) }
 

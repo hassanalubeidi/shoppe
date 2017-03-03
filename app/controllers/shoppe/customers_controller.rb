@@ -1,5 +1,6 @@
 module Shoppe
   class CustomersController < Shoppe::ApplicationController
+    before_filter :login_required
     before_filter { @active_nav = :customers }
     before_filter { params[:id] && @customer = Shoppe::Customer.find(params[:id]) }
 

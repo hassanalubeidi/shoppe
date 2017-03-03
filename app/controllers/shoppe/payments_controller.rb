@@ -1,5 +1,6 @@
 module Shoppe
   class PaymentsController < ApplicationController
+    before_filter :login_required
     before_filter { @order = Shoppe::Order.find(params[:order_id]) }
     before_filter { params[:id] && @payment = @order.payments.find(params[:id]) }
 

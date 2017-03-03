@@ -1,5 +1,6 @@
 module Shoppe
   class SessionsController < Shoppe::ApplicationController
+    before_filter :login_required
     layout 'shoppe/sub'
     skip_before_filter :login_required, only: [:new, :create]
 

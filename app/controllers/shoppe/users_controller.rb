@@ -1,5 +1,6 @@
 module Shoppe
   class UsersController < Shoppe::ApplicationController
+    before_filter :login_required
     before_filter { @active_nav = :users }
     before_filter { params[:id] && @user = Shoppe::User.find(params[:id]) }
     before_filter(only: [:create, :update, :destroy]) do

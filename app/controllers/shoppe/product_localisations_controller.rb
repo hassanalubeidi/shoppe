@@ -2,6 +2,7 @@ require 'globalize'
 
 module Shoppe
   class ProductLocalisationsController < ApplicationController
+    before_filter :login_required
     before_filter { @active_nav = :products }
     before_filter { @product = Shoppe::Product.find(params[:product_id]) }
     before_filter { params[:id] && @localisation = @product.translations.find(params[:id]) }

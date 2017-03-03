@@ -1,5 +1,6 @@
 module Shoppe
   class SettingsController < ApplicationController
+    before_filter :login_required
     before_filter { @active_nav = :settings }
 
     def update

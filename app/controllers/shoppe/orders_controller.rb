@@ -1,5 +1,6 @@
 module Shoppe
   class OrdersController < Shoppe::ApplicationController
+    before_filter :login_required
     before_filter { @active_nav = :orders }
     before_filter { params[:id] && @order = Shoppe::Order.find(params[:id]) }
 
