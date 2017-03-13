@@ -198,8 +198,8 @@ module Shoppe
       end
     end
 
-    def self.find_by_permalink
-      self.root.find_by_permalink
+    def self.find_by_permalink(permalink)
+      self.root.find_by_permalink(permalink)
     end
 
     private
