@@ -21,7 +21,7 @@ module Shoppe
     def create
       @variant = @product.variants.build(safe_params)
         if @variant.save
-          render json: @varaint
+          render json: @product.variants.last
         else
           render json: @varaint.errors, status: :unprocessable_entity
         end
