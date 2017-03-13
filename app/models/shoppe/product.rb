@@ -199,7 +199,7 @@ module Shoppe
     end
 
     def self.find_by_permalink(permalink)
-      self.root.find_by_permalink(permalink)
+      self.where(permalink: permalink).first
     end
 
     private
