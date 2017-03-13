@@ -3,6 +3,7 @@ module Shoppe
     before_filter { @active_nav = :products }
     before_filter { @product = Shoppe::Product.find(params[:product_id]) }
     before_filter { params[:id] && @variant = @product.variants.find(params[:id]) }
+    skip_before_action :verify_authenticity_token
 
     def index
       @variants = @product.variants.ordered
