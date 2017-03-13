@@ -35,7 +35,7 @@ module Shoppe
     end
 
     def show
-      @product = Shoppe.product.find(params[:id])
+      @product = Shoppe::Product.find(params[:id])
       render json: @product
     end
 
