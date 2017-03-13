@@ -1,6 +1,6 @@
 module Shoppe
   class ProductsController < Shoppe::ApplicationController
-    before_filter :login_required
+    before_filter :login_required, except: [:show]
     before_filter { @active_nav = :products }
     before_filter { params[:id] && @product = Shoppe::Product.root.find(params[:id]) }
 
@@ -35,6 +35,7 @@ module Shoppe
     end
 
     def show
+      @product = Shoppe.product.find(params[:id])
       render json: @product
     end
 
