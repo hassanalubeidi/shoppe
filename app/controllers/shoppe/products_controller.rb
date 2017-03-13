@@ -34,6 +34,10 @@ module Shoppe
                   .sort_by { |cat, _pro| cat.name }
     end
 
+    def show
+      render json: @product
+    end
+
     def new
       @product = Shoppe::Product.new
     end
