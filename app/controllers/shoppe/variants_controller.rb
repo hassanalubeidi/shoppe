@@ -9,6 +9,10 @@ module Shoppe
       @variants = @product.variants.ordered
     end
 
+    def show
+      render json: @variant
+    end
+
     def new
       @variant = @product.variants.build
       render action: 'form'
