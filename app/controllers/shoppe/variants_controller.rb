@@ -20,14 +20,11 @@ module Shoppe
 
     def create
       @variant = @product.variants.build(safe_params)
-      respond_to do |format|
         if @variant.save
           render json: @varaint
         else
-          format.html { render action: 'form' }
-          format.json { render json: @varaint.errors, status: :unprocessable_entity }
+          render json: @varaint.errors, status: :unprocessable_entity
         end
-      end
     end
 
     def edit
