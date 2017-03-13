@@ -22,8 +22,7 @@ module Shoppe
       @variant = @product.variants.build(safe_params)
       respond_to do |format|
         if @variant.save
-          format.html { redirect_to [@product, :variants], notice: t('shoppe.variants.create_notice') }
-          format.json { render json: @varaint }
+          render json: @varaint
         else
           format.html { render action: 'form' }
           format.json { render json: @varaint.errors, status: :unprocessable_entity }
