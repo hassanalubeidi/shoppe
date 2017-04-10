@@ -47,7 +47,7 @@ module Shoppe
     private
 
     def safe_params
-      params[:product].permit(:name, :permalink, :sku, :default_image_file, :price, :cost_price, :tax_rate_id, :weight, :stock_control, :active, :default, product_attributes_array: [:key, :value, :searchable, :public, :customizable])
+      params[:product].permit(:name, :permalink, :sku, :default_image_file, :price, :cost_price, :tax_rate_id, :weight, :stock_control, :active, :default, product_attributes_array: [:key, :value, :searchable, :public, :customizable], attachments: [default_image: file_params, data_sheet: file_params, extra: file_params])
     end
   end
 end
