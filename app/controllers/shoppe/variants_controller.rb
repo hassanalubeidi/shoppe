@@ -20,6 +20,7 @@ module Shoppe
 
     def create
       @variant = @product.variants.build(safe_params)
+      @variant.attachments[:extra] = decode_base64
         if @variant.save
           render json: @product.variants.last
         else
@@ -49,6 +50,24 @@ module Shoppe
     def safe_params
       file_params = [:file, :parent_id, :role, :parent_type, file: []]
       params[:product].permit(:name, :permalink, :sku, :default_image_file, :price, :cost_price, :tax_rate_id, :weight, :stock_control, :active, :default, product_attributes_array: [:key, :value, :searchable, :public, :customizable], attachments: [default_image: file_params, data_sheet: file_params, extra: file_params])
+    end
+
+    def decode_base64
+      # decode base64 string
+      Rails.logger.info 'decoding base64 file'
+      decoded_data = Base64.decode64(params[:product][:attachments][:extra][:base64])
+      # create 'file' understandable by Paperclip
+      data = StringIO.new(decoded_data)
+      data.class_eval do
+        attr_accessor :content_type, :original_filename
+      end
+
+      # set file properties
+      data.content_type = params[:product][:attachments][:extra][:filetype]
+      data.original_filename = params[:product][:attachments][:extra][:filename]
+
+      # return data to be used as the attachment file (paperclip)
+      data
     end
   end
 end
