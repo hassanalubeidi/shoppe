@@ -20,7 +20,7 @@ module Shoppe
 
     def create
       @variant = @product.variants.build(safe_params)
-      @variant.attachments.build(decode_base64)
+      @variant.image = decode_base64
         if @variant.save
           render json: @product.variants.last
         else
