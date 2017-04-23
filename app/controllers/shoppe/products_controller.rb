@@ -45,7 +45,6 @@ module Shoppe
 
     def create
       @product = Shoppe::Product.new(safe_params)
-      @product.build_calculator(params[:calculator])
       if @product.save
         redirect_to :products, flash: { notice: t('shoppe.products.create_notice') }
       else
@@ -84,7 +83,7 @@ module Shoppe
 
     def safe_params
       file_params = [:file, :parent_id, :role, :parent_type, file: []]
-      params[:product].permit(:name, :sku, :permalink, :description, :short_description, :weight, :price, :cost_price, :tax_rate_id, :stock_control, :active, :featured, :in_the_box, attachments: [default_image: file_params, data_sheet: file_params, extra: file_params], product_attributes_array: [:key, :value, :searchable, :public, :customizable], product_category_ids: [])
+      params[:product].permit(:name, :sku, :permalink, :description, :short_description, :weight, :price, :cost_price, :tax_rate_id, :stock_control, :active, :featured, :in_the_box, attachments: [default_image: file_params, data_sheet: file_params, extra: file_params], product_attributes_array: [:key, :value, :searchable, :public, :customizable], product_category_ids: [], calculator_attributes: [:html])
     end
   end
 end
