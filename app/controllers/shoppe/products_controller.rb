@@ -45,6 +45,7 @@ module Shoppe
 
     def create
       @product = Shoppe::Product.new(safe_params)
+      @product.build_calculator(params[:calculator])
       if @product.save
         redirect_to :products, flash: { notice: t('shoppe.products.create_notice') }
       else

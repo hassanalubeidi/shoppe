@@ -24,6 +24,9 @@
     %dl
       %dt= f.label :in_the_box, t('shoppe.products.in_the_box')
       %dd= f.text_area :in_the_box, :class => 'text'
+    %dl
+      %dt= label :calculator_code, "Calculator code"
+      %dd= text_area :calculator, :html, :class => 'text'
 
   = field_set_tag t('shoppe.products.attributes') do
     .margin
