@@ -24,8 +24,7 @@
                     - if product_attribute.key == "Design"
                       = product_attribute.key
                       \:
-                      %a{:href => "#{item.ordered_item.image.url}"}
-                        %i.image.icon
+                      %a{:href => "#{item.ordered_item.image.url}"} Image
                     - else
                       = product_attribute.key
                       \: #{product_attribute.value}
