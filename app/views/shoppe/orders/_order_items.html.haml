@@ -14,7 +14,15 @@
         - for item in @order.order_items
           %tr
             %td.qty= item.quantity
-            %td.product= item.ordered_item.full_name
+            %td.product
+              = item.ordered_item.full_name
+              %ul
+                - for product_attribute in item.ordered_item.product_attributes
+                  %li
+                    = product_attribute.key
+                    \: #{product_attribute.value}
+
+
             %td.sku= item.ordered_item.sku
             %td.money= number_to_currency item.total_cost
             %td.money= number_to_currency item.sub_total
