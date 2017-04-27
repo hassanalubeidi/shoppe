@@ -16,6 +16,8 @@
             %td.qty= item.quantity
             %td.product
               = item.ordered_item.full_name
+              - if item.ordered_item.product_attributes.count > 0
+                hr/
               %ul
                 - for product_attribute in item.ordered_item.product_attributes
                   %li
