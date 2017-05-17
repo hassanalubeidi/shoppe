@@ -24,8 +24,10 @@
     %dl
       %dt= f.label :in_the_box, t('shoppe.products.in_the_box')
       %dd= f.text_area :in_the_box, :class => 'text'
-    = f.fields_for :calculator do |store_fields|
-      = render 'calculator_form', :f => store_fields
+    %dl
+      %dt= f.label :calculator_settings, "Calculator Settings"
+      %a.button.button-mini.green{:href => "#"} Calculator Settings
+
     
 
   = field_set_tag t('shoppe.products.attributes') do
