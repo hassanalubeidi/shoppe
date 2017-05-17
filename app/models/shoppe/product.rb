@@ -7,7 +7,6 @@ module Shoppe
     validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
     self.table_name = 'shoppe_products'
     has_one :calculator
-    has_many :attributes
     accepts_nested_attributes_for :calculator
 
     # Add dependencies for products
